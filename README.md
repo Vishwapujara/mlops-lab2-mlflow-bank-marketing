@@ -279,6 +279,28 @@ At **http://127.0.0.1:5050**:
 - **Models → bank-marketing-classifier**: versions 1–3, alias `@champion` on v2 and `@challenger` on v3,
   tags `validation_status` and `test_roc_auc` on each version.
 
+### Screenshots
+
+**Experiment runs** – training, promotion and batch-inference runs, each with the datasets it used and their role:
+
+![Experiment runs](screenshots/01_experiment_runs.png)
+
+**A tuned training run (`hgb-tuned`)** – 9 validation metrics, 25 nested trial runs, logged datasets, and the tags `promote.py` uses to find candidates:
+
+![Training run](screenshots/02_training_run.png)
+
+**Validation plots logged with the run** – ROC curve, precision-recall curve and confusion matrix at the tuned threshold:
+
+![Validation plots](screenshots/03_validation_plots.png)
+
+**Hyperopt search compared in the UI** – parallel-coordinates plot of the HGB trials' parameters against `val_roc_auc`:
+
+![Tuning comparison](screenshots/04_tuning_compare.png)
+
+**Promotion gates for v3** – passes the absolute gates but fails `beats_champion`, so `@champion` stays on v2:
+
+![Promotion gates](screenshots/05_promotion_gates.png)
+
 ## Why the scores are around 0.70 ROC AUC
 
 Published results for this dataset reach ~0.80 ROC AUC without `duration` on a random split of all rows
