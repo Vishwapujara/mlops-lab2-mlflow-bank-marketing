@@ -1,0 +1,23 @@
+name: bank-marketing-mlflow
+
+python_env: python_env.yaml
+
+entry_points:
+  train:
+    parameters:
+      family: {type: string, default: hgb}
+      max_evals: {type: float, default: 25}
+    command: "python train.py --family {family} --max-evals {max_evals}"
+
+  promote:
+    parameters:
+      min_roc_auc: {type: float, default: 0.68}
+      min_recall: {type: float, default: 0.25}
+      min_improvement: {type: float, default: 0.002}
+    command: "python promote.py --min-roc-auc {min_roc_auc} --min-recall {min_recall} --min-improvement {min_improvement}"
+
+  batch_predict:
+    parameters:
+      alias: {type: string, default: champion}
+      chunks: {type: float, default: 4}
+    command: "python batch_predict.py --alias {alias} --chunks {chunks}"
