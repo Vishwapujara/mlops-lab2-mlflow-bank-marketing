@@ -1,0 +1,10 @@
+mlflow
+scikit-learn
+hyperopt
+pandas
+numpy
+seaborn
+matplotlib
+xgboost==1.7.6
+pyspark
+ipykernel
